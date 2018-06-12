@@ -7,27 +7,33 @@ const registerRoute = (location) => {
         console.log(`ROUTE REQUESTED: ${req.path}.js`);
         res.json(require(`${location}/${req.path}.js`))
     })
-}
+};
 
-let Server = {
-    setLocation: (l) => {
+class Server {
+    constructor() {
+        this.port = 9000;
+    }
+
+    setLocation(l) {
         location = l;
-    },
-    setPort: (p) => {
-        port = p;
-    },
-    run: (l, p, callback) => {
+    };
+
+    setPort(p) {
+        this.port = p;
+    };
+
+    run (l, p, callback) {
         if(!!l) location = l;
-        if(!!p) port = p;
+        if(!!p) this.port = p;
 
         registerRoute(location);
 
-        app.listen(9000, () => {
-            console.log(`Running server in ${port}`);
+        app.listen(this.port, () => {
+            console.log(`Running server in ${this.port}`);
             console.log(`Serving files from ${location}`);
             if(callback) callback();
         });
     }
-};
+}
 
-module.exports = Server;
+module.exports = new Server();
