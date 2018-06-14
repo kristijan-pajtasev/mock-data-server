@@ -1,6 +1,6 @@
 {
   "name": "@kpajtasev/mock-data-server",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "Server/index.js",
   "scripts": {
@@ -11,5 +11,9 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kristijan-pajtasev/mock-data-server.git"
   }
 }
