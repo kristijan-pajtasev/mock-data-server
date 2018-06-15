@@ -1,6 +1,6 @@
 {
   "name": "@kpajtasev/mock-data-server",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "",
   "main": "Server/index.js",
   "scripts": {

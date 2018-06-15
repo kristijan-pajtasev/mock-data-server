@@ -1,2 +1,26 @@
 # mock-data-server
-Small NodeJS server for mocked data
+Small NodeJS server for mocked data. When run, it uses data from 
+json or js files for response. It resolves data based on url path. 
+
+## Usage
+```
+let server = require('@kpajtasev/mock-data-server');
+server.run(`mocksLocation`);
+```
+Runs mocking server in default port 9000.
+
+## Setting custom port
+```
+let server = require('@kpajtasev/mock-data-server');
+server.setPort(3000);
+server.run(`mocksLocation`);
+```
+
+## Mock Example
+```
+let server = require('@kpajtasev/mock-data-server');
+server.run(`mocksLocation`);
+```
+When http://127.0.0.1:9000/test is request, response will 
+match content of mocksLocation/test file.
+
