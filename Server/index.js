@@ -22,9 +22,23 @@ class Server {
         this.port = p;
     };
 
+    setAccessOrigin(origin) {
+        this.origin = origin;
+    }
+
     run (l, p, callback) {
         if(!!l) location = l;
         if(!!p) this.port = p;
+
+        if(this.origin) {
+            let origin = this.origin;
+            app.use(function(req, res, next) {
+                res.header("Access-Control-Allow-Origin", origin);
+                res.header("Access-Control-Allow-Credentials", "true");
+                res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+                next();
+            });
+        }
 
         registerRoute(location);
 
