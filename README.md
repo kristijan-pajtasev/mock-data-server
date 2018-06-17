@@ -16,6 +16,15 @@ server.setPort(3000);
 server.run(`mocksLocation`);
 ```
 
+## Cross origin
+To fix cross origin errors, setAccessOrigin method can be used. 
+Following code allows requests from local port 9090.
+```
+let server = require('@kpajtasev/mock-data-server');
+server.setAccessOrigin('http://127.0.0.1:9090');
+server.run(`mocksLocation`);
+```
+
 ## Mock Example
 ```
 let server = require('@kpajtasev/mock-data-server');
