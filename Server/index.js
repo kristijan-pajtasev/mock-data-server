@@ -5,7 +5,12 @@ let location, port;
 const registerRoute = (location) => {
     app.get('*', (req, res) => {
         console.log(`ROUTE REQUESTED: ${req.path}.js`);
-        res.json(require(`${location}/${req.path !== '/' ? req.path : 'index'}`))
+        try {
+            let data = require(`${location}/${req.path !== '/' ? req.path : 'index'}`);
+            res.json(data);
+        } catch(e) {
+            res.status(404).send('Not found');
+        }
     })
 };
 

@@ -1,6 +1,7 @@
 # mock-data-server
 Small NodeJS server for mocked data. When run, it uses data from 
-json or js files for response. It resolves data based on url path. 
+json or js files for response. It resolves data based on url path. If 
+path does not exist throws 404.
 
 ## Usage
 ```
