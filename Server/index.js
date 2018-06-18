@@ -3,7 +3,7 @@ let app = express();
 let location, port;
 
 const registerRoute = (location) => {
-    app.get('*', (req, res) => {
+    app.all('*', (req, res) => {
         console.log(`ROUTE REQUESTED: ${req.path}.js`);
         try {
             let data = require(`${location}/${req.path !== '/' ? req.path : 'index'}`);
