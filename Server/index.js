@@ -2,11 +2,13 @@ let express = require('express');
 let app = express();
 let location, port;
 
-const registerRoute = (location) => {
+const registerRoute = (location, namespace) => {
     app.all('*', (req, res) => {
         console.log(`ROUTE REQUESTED: ${req.path}.js`);
         try {
-            let data = require(`${location}/${req.path !== '/' ? req.path : 'index'}`);
+            let path = req.path !== '/' ? req.path : 'index';
+            if(namespace) path = path.replace(namespace, '');
+            let data = require(`${location}/${path}`);
             res.json(data);
         } catch(e) {
             res.status(404).send('Not found');
@@ -27,6 +29,10 @@ class Server {
         this.port = p;
     };
 
+    setNamespace(namespace) {
+        this.namespace = namespace;
+    }
+
     setAccessOrigin(origin) {
         this.origin = origin;
     }
@@ -45,7 +51,7 @@ class Server {
             });
         }
 
-        registerRoute(location);
+        registerRoute(location, this.namespace);
 
         app.listen(this.port, () => {
             console.log(`Running server in ${this.port}`);
