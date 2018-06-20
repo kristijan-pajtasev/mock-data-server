@@ -26,6 +26,16 @@ server.setAccessOrigin('http://127.0.0.1:9090');
 server.run(`mocksLocation`);
 ```
 
+## Mocks namespace
+Namespace of mock files can be set using setNamespace method. Bellow 
+example means that before resolving file, /api will be removed from 
+path.
+```
+let server = require('@kpajtasev/mock-data-server');
+server.setNamespace('/api');
+server.run(`mocksLocation`);
+```
+
 ## Mock Example
 ```
 let server = require('@kpajtasev/mock-data-server');
