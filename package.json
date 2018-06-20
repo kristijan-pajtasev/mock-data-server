@@ -1,13 +1,13 @@
 {
   "name": "@kpajtasev/mock-data-server",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "",
   "main": "Server/index.js",
   "scripts": {
     "example": "node example/index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Kristijan Pajtasev",
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.2"
@@ -15,5 +15,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/kristijan-pajtasev/mock-data-server.git"
-  }
+  },
+  "keywords": [
+    "node", "nodemodule", "express", "server", "development", "devenv", "mock", "mockserver", "mocks"
+  ]
 }
