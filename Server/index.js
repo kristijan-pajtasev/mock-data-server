@@ -9,6 +9,7 @@ const registerRoute = (location, namespace) => {
             let path = req.path !== '/' ? req.path : 'index';
             if(namespace) path = path.replace(namespace, '');
             let data = require(`${location}/${path}`);
+            let query = req.query; // todo: use for filtering
             res.json(data);
         } catch(e) {
             res.status(404).send('Not found');
