@@ -2,6 +2,15 @@ let express = require('express');
 let app = express();
 let location, port;
 
+const filter = (data, filters) => {
+    console.log(filters)
+    return data.filter(d => {
+        return Object.keys(filters).reduce((agg, key) => {
+            return agg && d[key] == filters[key];
+        }, true)
+    });
+};
+
 const registerRoute = (location, namespace) => {
     app.all('*', (req, res) => {
         console.log(`ROUTE REQUESTED: ${req.path}.js`);
@@ -10,6 +19,7 @@ const registerRoute = (location, namespace) => {
             if(namespace) path = path.replace(namespace, '');
             let data = require(`${location}/${path}`);
             let query = req.query; // todo: use for filtering
+            if(Array.isArray(data)) data = filter(data, query);
             res.json(data);
         } catch(e) {
             res.status(404).send('Not found');
