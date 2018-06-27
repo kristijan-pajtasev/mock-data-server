@@ -36,6 +36,28 @@ server.setNamespace('/api');
 server.run(`mocksLocation`);
 ```
 
+## Filtering
+If your mock is array, you can use filtering by sending query parameters.
+### Example
+```
+// test.json
+[
+  { "test": 2, "name": "J"},
+  { "test": 1, "name": "A"},
+  { "test": 2, "name": "W"},
+  { "test": 3, "name": "E"}
+]
+```
+When /test is returned full test.json content is returned.
+
+If /test?test=1 is requested, response is:
+```
+// test.json
+[
+  { "test": 1, "name": "A"}
+]
+```
+
 ## Mock Example
 ```
 let server = require('@kpajtasev/mock-data-server');

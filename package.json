@@ -1,6 +1,6 @@
 {
   "name": "@kpajtasev/mock-data-server",
-  "version": "2.7.0",
+  "version": "2.7.1",
   "description": "Node module for serving mock data",
   "main": "Server/index.js",
   "scripts": {
