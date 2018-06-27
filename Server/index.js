@@ -20,6 +20,7 @@ const registerRoute = (location, namespace) => {
             let data = require(`${location}/${path}`);
             let query = req.query; // todo: use for filtering
             if(Array.isArray(data)) data = filter(data, query);
+            else if(typeof data === 'function') data = data();
             res.json(data);
         } catch(e) {
             res.status(404).send('Not found');
