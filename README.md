@@ -58,6 +58,25 @@ If /test?test=1 is requested, response is:
 ]
 ```
 
+## Function
+Mock also can be defined as function where result of function will 
+be sent as response.
+
+### Example
+```
+// test.js
+module.exports = () => [
+  { "test": 2, "name": "J"}
+]
+```
+
+When /test is requested response is:
+```
+[
+  { "test": 2, "name": "J"}
+]
+```
+
 ## Mock Example
 ```
 let server = require('@kpajtasev/mock-data-server');
